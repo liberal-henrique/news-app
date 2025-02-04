@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import com.example.myapp.data.api.MyApi
 import com.example.myapp.data.repository.NewsRepository
 import com.example.myapp.presentation.ui.screens.NewsListScreen
 import com.example.myapp.presentation.viewmodel.NewsViewModel

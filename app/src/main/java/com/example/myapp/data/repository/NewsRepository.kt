@@ -5,13 +5,11 @@ import com.example.myapp.domain.model.TopHeadlinesResponse
 import com.example.myapp.data.api.RetrofitProvider
 import retrofit2.Callback
 
-class NewsRepository {
-
-    private val BASE_URL = "https://newsapi.org/"
-
+class NewsRepository(
     private val apiService: MyApi = RetrofitProvider
-        .provideRetrofit(BASE_URL)
+        .provideRetrofit("https://newsapi.org/")
         .create(MyApi::class.java)
+) {
 
     fun getTopHeadLines(
         country: String,

@@ -17,7 +17,7 @@ class NewsViewModel(private val newsRepository: NewsRepository): ViewModel() {
     val isLoading: State<Boolean> = _isLoading
 
     private val _articles = mutableStateOf<List<Article>>(emptyList())
-    var articles: State<List<Article>> = _articles
+    val articles: State<List<Article>> = _articles
 
     private val _errorMessage = mutableStateOf<String?>(null)
     val errorMessage: State<String?> = _errorMessage

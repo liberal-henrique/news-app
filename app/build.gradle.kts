@@ -50,11 +50,17 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
@@ -64,4 +70,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     implementation (libs.logging.interceptor)
+
+
 }
