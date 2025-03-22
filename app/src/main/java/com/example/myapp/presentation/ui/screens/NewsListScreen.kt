@@ -58,6 +58,3 @@ fun NewsListScreen(viewModel: NewsViewModel) {
         }
     }
 }
-
-
-

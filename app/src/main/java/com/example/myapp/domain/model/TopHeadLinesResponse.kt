@@ -1,6 +1,7 @@
 package com.example.myapp.domain.model
 
 import kotlinx.serialization.Serializable
+import java.time.OffsetDateTime
 
 @Serializable
 data class TopHeadlinesResponse(
@@ -19,6 +20,11 @@ data class Article(
     val urlToImage: String?,
     val publishedAt: String,
     val content: String?
+)
+
+data class ArticleWithDate(
+    val article: Article,
+    val parsedDate: OffsetDateTime
 )
 
 @Serializable

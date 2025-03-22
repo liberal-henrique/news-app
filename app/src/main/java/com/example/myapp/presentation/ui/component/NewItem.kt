@@ -8,6 +8,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,14 @@ fun NewsItem(article: Article) {
                 .background(Color.LightGray)
                 .padding(16.dp)
         ){
+            Text(
+                text = article.source.name,
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier
+                    .padding(bottom = 8.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+
             Text(
                 text = article.title,
                 style = MaterialTheme.typography.labelLarge,
