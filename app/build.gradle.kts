@@ -71,5 +71,6 @@ dependencies {
 
     implementation (libs.logging.interceptor)
 
-
+    implementation(platform(libs.androidx.compose.bom.v20250200))
+    implementation(libs.coil.compose)
 }

@@ -1,5 +1,7 @@
 [versions]
 agp = "8.8.0"
+coilCompose = "2.6.0"
+composeBomVersion = "2025.02.00"
 converterGson = "2.11.0"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
@@ -16,7 +18,9 @@ mockitoInline = "4.8.0"
 retrofit = "2.11.0"
 
 [libraries]
+androidx-compose-bom-v20250200 = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

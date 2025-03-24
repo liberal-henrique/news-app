@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.myapp.domain.model.Article
 
 @Composable
@@ -35,12 +36,16 @@ fun NewsItem(article: Article) {
                     .align(Alignment.CenterHorizontally)
             )
 
+            AsyncImage(
+                model = article.urlToImage,
+                contentDescription = "New's Image"
+            )
+
             Text(
                 text = article.title,
                 style = MaterialTheme.typography.labelLarge,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
-
             Text(
                 text = article.description ?: "No description available",
                 style = MaterialTheme.typography.bodySmall
