@@ -8,12 +8,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.myapp.data.repository.NewsRepository
 import com.example.myapp.domain.model.Article
-import com.example.myapp.domain.model.ArticleWithDate
 import com.example.myapp.domain.model.TopHeadlinesResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.time.OffsetDateTime
+import java.util.UUID
 
 class NewsViewModel(private val newsRepository: NewsRepository): ViewModel() {
 
@@ -28,11 +28,10 @@ class NewsViewModel(private val newsRepository: NewsRepository): ViewModel() {
 
     private val TAG: String = "CHECK_RESPONSE"
 
-    private var articlesListToOrder: List<ArticleWithDate> = emptyList()
-
     private var isFetched = false
 
     fun fetchNews() {
+        Log.d(TAG, "How many times I am calling fetchNews()?")
         if (isFetched) return
         isFetched = true
 
@@ -51,30 +50,15 @@ class NewsViewModel(private val newsRepository: NewsRepository): ViewModel() {
                     _isLoading.value = false
                     if (response.isSuccessful) {
                         response.body()?.let { responseBody ->
-                            Log.i(TAG, "onResponse: ${responseBody.articles}")
-                            articlesListToOrder = responseBody.articles.map { article ->
-                                ArticleWithDate(
-                                    article = article,
-                                    parsedDate = OffsetDateTime.parse(article.publishedAt)
-                                )
 
+                            val updatedArticles = responseBody.articles.mapIndexed { index, article ->
+                                val newId = UUID.randomUUID().toString()
+                                val newSource = article.source.copy(id = newId)
+                                article.copy(source = newSource)
                             }
-                        }
-                        _articles.value = articlesListToOrder
-                            .sortedByDescending {
-                                it.parsedDate
+                            _articles.value = updatedArticles.sortedByDescending {
+                                OffsetDateTime.parse(it.publishedAt)
                             }
-                            .map { item ->
-                            Article(
-                                source = item.article.source,
-                                author = item.article.author,
-                                title = item.article.title,
-                                description = item.article.description,
-                                url = item.article.url,
-                                urlToImage = item.article.urlToImage,
-                                publishedAt = item.article.publishedAt,
-                                content = item.article.content
-                            )
                         }
                     }
                     else {
