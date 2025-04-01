@@ -74,4 +74,6 @@ dependencies {
 
     implementation(platform(libs.androidx.compose.bom.v20250200))
     implementation(libs.coil.compose)
+
+    implementation(libs.androidx.biometric)
 }
