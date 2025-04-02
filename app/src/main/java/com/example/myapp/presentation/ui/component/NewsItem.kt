@@ -3,6 +3,7 @@ package com.example.myapp.presentation.ui.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -45,6 +46,7 @@ fun NewsItem(
                     .align(Alignment.CenterHorizontally)
             )
             AsyncImage(
+                modifier = Modifier.fillMaxSize(),
                 model = article.urlToImage,
                 contentDescription = "New's Image"
             )
