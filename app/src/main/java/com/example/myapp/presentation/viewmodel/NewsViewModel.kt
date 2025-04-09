@@ -39,8 +39,6 @@ class NewsViewModel(private val newsRepository: NewsRepository): ViewModel() {
         _errorMessage.value = null
 
         newsRepository.getTopHeadLines(
-            country = "us",
-            apiKey = "6444c6d8fdda4861aa9609eb13fe74b8",
             callback = object : Callback<TopHeadlinesResponse> {
                 @RequiresApi(Build.VERSION_CODES.O)
                 override fun onResponse(
@@ -65,7 +63,6 @@ class NewsViewModel(private val newsRepository: NewsRepository): ViewModel() {
                         _errorMessage.value = "Error: ${response.code()} - ${response.message()}"
                     }
                 }
-
                 override fun onFailure(call: Call<TopHeadlinesResponse>, t: Throwable) {
                     _isLoading.value = false
                     _errorMessage.value = "Failed to fetch news: ${t.message}"

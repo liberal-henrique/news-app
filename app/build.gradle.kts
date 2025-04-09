@@ -37,6 +37,23 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+    }
+
+    flavorDimensions += "source"
+
+    productFlavors {
+        create("newsapi") {
+            dimension = "source"
+            buildConfigField ("String", "NEWS_API_KEY", "\"6444c6d8fdda4861aa9609eb13fe74b8\"")
+            buildConfigField ("String", "URL", "\"https://newsapi.org/\"")
+            buildConfigField ("String", "COUNTRY", "\"us\"")
+        }
+        create("newyorktimes") {
+            dimension = "source"
+            buildConfigField ("String", "URL", "\"https://api.nytimes.com/svc/archive/\"")
+            buildConfigField ("String", "NEWS_API_KEY", "\"4c32rW8zG8XNgmkG1bO62Kkz6MkI4ghi\"")
+        }
     }
 }
 
