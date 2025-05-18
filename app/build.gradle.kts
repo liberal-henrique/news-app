@@ -15,12 +15,12 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -53,6 +53,7 @@ android {
             dimension = "source"
             buildConfigField ("String", "URL", "\"https://api.nytimes.com/svc/archive/\"")
             buildConfigField ("String", "NEWS_API_KEY", "\"4c32rW8zG8XNgmkG1bO62Kkz6MkI4ghi\"")
+            buildConfigField("String", "COUNTRY", "\"\"")
         }
     }
 }
@@ -94,4 +95,8 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.androidx.biometric)
+
+    implementation(libs.kotlinx.serialization.json.v160)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+
 }

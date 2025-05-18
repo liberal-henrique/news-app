@@ -1,5 +1,6 @@
 package com.example.myapp.presentation.navigation
 
+import android.util.Log
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -24,19 +25,16 @@ fun CustomNavHost(
                 newsViewModel
             )
         }
-        composable(
-            route = "news_detail/{articleId}"
-        ) { backStackEntry ->
+        composable(route = "news_detail/{articleId}") { backStackEntry ->
             val articleId = backStackEntry.arguments?.getString("articleId")
-            val article = newsViewModel.articles.value.find { it.source.id == articleId }
+            val article = newsViewModel.articles.value.find { it.id == articleId }
+            Log.d("NAVIGATION", "Article ID: $articleId - Found: ${article != null}")
             article?.let {
-                article?.let {
-                    NewsContentScreen(
-                        article = it,
-                        navController = navController
-                    )
-                } ?: Text("Article not found.")
-            }
+                NewsContentScreen(
+                    article = it,
+                    navController = navController
+                )
+            } ?: Text("Article not found.")
         }
     }
 }

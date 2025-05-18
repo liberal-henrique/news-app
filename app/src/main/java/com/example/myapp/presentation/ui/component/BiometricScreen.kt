@@ -36,7 +36,7 @@ fun BiometricScreen(
             val navController = rememberNavController()
             CustomNavHost(
                 navController = navController,
-            newsViewModel = newsViewModel
+                newsViewModel = newsViewModel
             )
         }
         is BiometricPromptManager.BiometricResult.AuthenticationFailed,

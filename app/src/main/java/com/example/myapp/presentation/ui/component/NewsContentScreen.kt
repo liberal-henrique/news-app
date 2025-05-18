@@ -5,8 +5,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,44 +28,61 @@ fun NewsContentScreen(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(16.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFF0F0F0)) // cinzento claro
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.LightGray)
-                .padding(8.dp)
+                .padding(16.dp)
         ) {
             Text(
-                text = article.source.name,
+                text = article.title,
                 style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-                    .align(Alignment.CenterHorizontally)
-            )
-            AsyncImage(
-                model = article.urlToImage,
-                contentDescription = "New's Image"
-            )
-            Text(
-                text = article.publishedAt,
-                style = MaterialTheme.typography.labelLarge,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
+
+            article.description?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+            }
+
             Text(
-                text = article.content ?: "No description available",
-                style = MaterialTheme.typography.bodySmall
+                text = "Published at: ${article.publishedAt}",
+                style = MaterialTheme.typography.labelMedium,
+                modifier = Modifier.padding(bottom = 4.dp)
             )
+
+            Text(
+                text = "Author: ${article.author ?: "Unknown"}",
+                style = MaterialTheme.typography.labelSmall,
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
+
+            Text(
+                text = "Source: ${article.sourceName}",
+                style = MaterialTheme.typography.labelSmall,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
+            Text(
+                text = article.content ?: "No content available",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
             Button(
-                onClick = {
-                    Log.d("my Button", "Where am I going?")
-                    navController.navigate("news_list")
-                },
-                modifier = Modifier
-                    .padding(16.dp)
+                onClick = { navController.popBackStack() },
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
                 Text("Voltar")
             }
         }
     }
+
 }

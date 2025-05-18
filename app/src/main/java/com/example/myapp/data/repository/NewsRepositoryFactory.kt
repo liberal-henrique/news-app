@@ -1,10 +1,10 @@
 package com.example.myapp.data.repository
 
 import com.example.myapp.BuildConfig
+import com.example.myapp.data.RetrofitProvider
 import com.example.myapp.data.api.NewsApi
-import com.example.myapp.data.api.NewsDataSource
 import com.example.myapp.data.api.NytApiService
-import com.example.myapp.data.api.RetrofitProvider
+import com.example.myapp.data.source.NytApiDataSource
 
 object NewsRepositoryFactory {
     fun create(): NewsRepository {

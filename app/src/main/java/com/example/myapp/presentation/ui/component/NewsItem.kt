@@ -33,13 +33,11 @@ fun NewsItem(
                 .background(Color.LightGray)
                 .padding(16.dp)
                 .clickable {
-                    article.source.id?.let { id ->
-                        onClick(id)
-                    }
+                    onClick(article.id)
                 }
         ){
             Text(
-                text = article.source.name,
+                text = article.sourceName,
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier
                     .padding(bottom = 8.dp)

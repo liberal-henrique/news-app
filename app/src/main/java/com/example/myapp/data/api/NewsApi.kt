@@ -1,6 +1,6 @@
 package com.example.myapp.data.api
 
-import com.example.myapp.domain.model.TopHeadlinesResponse
+import com.example.myapp.data.api.dto.news.TopHeadlinesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

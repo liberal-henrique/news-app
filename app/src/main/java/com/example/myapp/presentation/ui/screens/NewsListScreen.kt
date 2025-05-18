@@ -85,7 +85,6 @@ fun NewsListScreen(
                         article,
                         onClick = { sourceId ->
                             val route = Screen.NewsDetail.createRoute(sourceId)
-
                             navController.navigate(route)
                         }
                     )

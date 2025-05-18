@@ -1,5 +1,7 @@
-package com.example.myapp.domain.model
+package com.example.myapp.data.api.dto.news
 
+import com.example.myapp.data.source.NewsApiArticleDto
+import com.example.myapp.domain.model.Article
 import kotlinx.serialization.Serializable
 import java.time.OffsetDateTime
 
@@ -7,12 +9,12 @@ import java.time.OffsetDateTime
 data class TopHeadlinesResponse(
     val status: String,
     val totalResults: Int,
-    val articles: List<Article>
+    val articles: List<NewsApiArticleDto>
 )
 
 @Serializable
-data class Article(
-    val source: Source,
+data class ArticleDto(
+    val source: SourceDto,
     val author: String?,
     val title: String,
     val description: String?,
@@ -28,7 +30,7 @@ data class ArticleWithDate(
 )
 
 @Serializable
-data class Source(
+data class SourceDto(
     val id: String?,
     val name: String
 )
